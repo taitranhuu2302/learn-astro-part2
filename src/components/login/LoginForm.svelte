@@ -1,5 +1,6 @@
 <script>
     import axiosConfig from "../../config/AxiosConfig.ts";
+    import {onMount} from "svelte";
 
     let loginData = {
         email: 'admin@gmail.com',
@@ -7,9 +8,11 @@
     };
 
     const onSubmit = async () => {
-        const response = await axiosConfig.post(`/api/login.json`, loginData)
+        const response = await axiosConfig.post(`/api/login`, loginData)
         if (response) {
-            router
+            const expire = new Date().getTime() + (1000 * 60 * 60 * 24);
+            document.cookie = `auth=${JSON.stringify(response)}; expires=${expire}; path=/`;
+            window.location.href = "/"
         }
     }
 </script>

@@ -6,11 +6,9 @@ import Category from '../components/home/Category.svelte'
 import NewArrival from '../components/home/NewArrival.svelte'
 import Abs from '../components/home/Abs.svelte'
 import Products from '../components/home/Products.svelte'
-
-const data: any = Astro.locals;
 ---
 
-<Layout title={data.title || "Welcome to Astro."}>
+<Layout title={"Welcome to Astro."}>
     <main>
         <Banner/>
         <Featured/>
@@ -20,7 +18,3 @@ const data: any = Astro.locals;
         <Products/>
     </main>
 </Layout>
-
-<style>
-
-</style>

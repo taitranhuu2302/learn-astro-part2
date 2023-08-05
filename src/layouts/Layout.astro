@@ -3,11 +3,13 @@ import StyleCommon from "./StyleCommon.astro";
 import Header from '../components/common/Header.svelte'
 import Navbar from "../components/common/Navbar.svelte";
 import Footer from "../components/common/Footer.svelte";
+
 interface Props {
-    title: string;
+  title: string;
 }
 
 const {title} = Astro.props;
+const {user} = Astro.locals
 ---
 
 <!DOCTYPE html>
@@ -18,14 +20,14 @@ const {title} = Astro.props;
     <meta name="viewport" content="width=device-width"/>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
     <meta name="generator" content={Astro.generator}/>
-    <StyleCommon />
+    <StyleCommon/>
     <title>{title}</title>
 </head>
 <body>
-<Header />
-<Navbar />
+<Header/>
+<Navbar client:load/>
 <slot/>
-<Footer />
+<Footer/>
 </body>
 </html>
 <style is:global>

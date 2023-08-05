@@ -1,3 +1,12 @@
+<script>
+    import {authStore} from '../../stores/authStore.ts'
+    import {onMount} from "svelte";
+
+    onMount(() => {
+        console.log($authStore)
+    })
+</script>
+
 <nav class="bg-gray-800">
     <div class="container flex">
         <div class="px-8 py-4 bg-primary md:flex items-center cursor-pointer relative group hidden">
