@@ -7,7 +7,7 @@
     })
 </script>
 
-<nav class="bg-gray-800">
+<nav class="bg-gray-800 mt-[82px]">
     <div class="container flex">
         <div class="px-8 py-4 bg-primary md:flex items-center cursor-pointer relative group hidden">
             <span class="text-white">
@@ -51,7 +51,15 @@
                 <a href="/" class="text-gray-200 hover:text-white transition">About us</a>
                 <a href="/" class="text-gray-200 hover:text-white transition">Contact us</a>
             </div>
-            <a href="/login" class="text-gray-200 hover:text-white transition">Login</a>
+            {#if !!Object.keys($authStore).length}
+                <p class="text-gray-200 hover:text-white transition">
+                    {$authStore.username}
+                </p>
+            {:else}
+                <a href="/login" class="text-gray-200 hover:text-white transition">
+                    Login
+                </a>
+            {/if}
         </div>
     </div>
 </nav>

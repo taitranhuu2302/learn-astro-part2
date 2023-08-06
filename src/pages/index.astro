@@ -6,6 +6,11 @@ import Category from '../components/home/Category.svelte'
 import NewArrival from '../components/home/NewArrival.svelte'
 import Abs from '../components/home/Abs.svelte'
 import Products from '../components/home/Products.svelte'
+import axiosConfig from "../config/AxiosConfig";
+import type { ProductType } from "../types/product";
+
+const newArrivalProducts: ProductType[] = await axiosConfig.get(`${Astro.url.origin}/api/products?limit=4`)
+const recommendedProducts: ProductType[] = await axiosConfig.get(`${Astro.url.origin}/api/products?limit=8`)
 ---
 
 <Layout title={"Welcome to Astro."}>
@@ -13,8 +18,8 @@ import Products from '../components/home/Products.svelte'
         <Banner/>
         <Featured/>
         <Category/>
-        <NewArrival/>
+        <NewArrival client:load products={newArrivalProducts}/>
         <Abs/>
-        <Products/>
+        <Products client:load products={recommendedProducts}/>
     </main>
 </Layout>

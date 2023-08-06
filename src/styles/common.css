@@ -1,11 +1,16 @@
 .size-selector input:checked + label {
-    @apply bg-primary text-white;
+  @apply bg-primary text-white;
 }
 
 .color-selector input:checked + label {
-    @apply ring-2 ring-primary;
+  @apply ring-2 ring-primary;
 }
 
 .input-box {
-    @apply block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded placeholder-gray-400 focus:border-primary focus:ring-0;
+  @apply block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded placeholder-gray-400 focus:border-primary focus:ring-0;
+}
+
+.btn {
+  @apply bg-primary border border-primary text-white px-8 py-3 font-medium
+                    rounded-md hover:bg-transparent hover:text-primary;
 }

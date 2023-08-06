@@ -1,17 +1,18 @@
 <script>
     import axiosConfig from "../../config/AxiosConfig.ts";
-    import {onMount} from "svelte";
 
     let loginData = {
-        email: 'admin@gmail.com',
-        password: 'password'
+        username: 'mor_2314',
+        password: '83r5^_'
     };
 
     const onSubmit = async () => {
         const response = await axiosConfig.post(`/api/login`, loginData)
-        if (response) {
+        if (!!Object.keys(response).length) {
+            const {token, username} = response;
             const expire = new Date().getTime() + (1000 * 60 * 60 * 24);
-            document.cookie = `auth=${JSON.stringify(response)}; expires=${expire}; path=/`;
+            document.cookie = `token=${JSON.stringify(token)}; expires=${expire}; path=/`;
+            document.cookie = `username=${JSON.stringify(username)}; expires=${expire}; path=/`;
             window.location.href = "/"
         }
     }
@@ -20,11 +21,11 @@
 <form on:submit|preventDefault={onSubmit} autocomplete="off">
     <div class="space-y-2">
         <div>
-            <label for="email" class="text-gray-600 mb-2 block">Email address</label>
-            <input type="email" name="email" id="email"
-                   bind:value="{loginData.email}"
+            <label for="username" class="text-gray-600 mb-2 block">Username</label>
+            <input type="text" name="username" id="username"
+                   bind:value="{loginData.username}"
                    class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400"
-                   placeholder="youremail.@domain.com">
+                   placeholder="Username">
         </div>
         <div>
             <label for="password" class="text-gray-600 mb-2 block">Password</label>
