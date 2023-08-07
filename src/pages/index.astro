@@ -9,8 +9,8 @@ import Products from '../components/home/Products.svelte'
 import axiosConfig from "../config/AxiosConfig";
 import type { ProductType } from "../types/product";
 
-const newArrivalProducts: ProductType[] = await axiosConfig.get(`${Astro.url.origin}/api/products?limit=4`)
-const recommendedProducts: ProductType[] = await axiosConfig.get(`${Astro.url.origin}/api/products?limit=8`)
+const newArrivalProducts: ProductType[] = await axiosConfig.get(`/api/products?limit=4`)
+const recommendedProducts: ProductType[] = await axiosConfig.get(`/api/products?limit=8`)
 ---
 
 <Layout title={"Welcome to Astro."}>

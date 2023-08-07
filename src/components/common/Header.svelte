@@ -4,7 +4,6 @@
   import {isOpenCart} from "../../stores/cartStore";
   import {setContext} from 'svelte';
   import {clickOutside} from '../../directives/svelte/click-outside'
-  import ToastContainer from "./Toast/ToastContainer.svelte";
 
   setContext('clickOutside', clickOutside)
 
@@ -57,4 +56,3 @@
     </div>
   </div>
 </header>
-<ToastContainer/>

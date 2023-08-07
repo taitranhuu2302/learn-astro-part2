@@ -1,4 +1,4 @@
-import {defineMiddleware, sequence} from "astro/middleware";
+import {sequence} from "astro/middleware";
 import {authMiddleware} from "./middlewares/authMiddleware";
 import {validationMiddleware} from "./middlewares/validationMiddleware";
 
