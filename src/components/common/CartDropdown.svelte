@@ -4,7 +4,7 @@
 
 <div class="shopping-cart" class:is-open={$isOpenCart}>
   <div class="shopping-cart-header">
-    <i class="fa fa-shopping-cart cart-icon" />
+    <i class="fa fa-shopping-cart cart-icon"></i>
     <div class="shopping-cart-total">
       <span class="lighter-text">Total:</span>
       <span class="main-color-text">${$totalAmountInCart}</span>

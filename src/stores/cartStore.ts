@@ -1,6 +1,7 @@
 import { atom, computed } from "nanostores";
 import type { CartItemType } from "../types/cart";
 import type { ProductType } from "../types/product";
+import {addToast} from "./toastStore";
 
 export const cartStore = atom<CartItemType[]>([]);
 export const isOpenCart = atom<boolean>(false)
@@ -28,4 +29,8 @@ export const addToCartAction = (product: ProductType) => {
   }
 
   cartStore.set(carts)
+  addToast({
+    message: "Add cart successfully!",
+    type: 'success'
+  })
 };

@@ -1,10 +1,11 @@
 <script>
-	import { cartStore } from './../../stores/cartStore.ts';
+  import {cartStore} from './../../stores/cartStore.ts';
   import CartDropdown from "./CartDropdown.svelte";
   import {isOpenCart} from "../../stores/cartStore";
   import {setContext} from 'svelte';
   import {clickOutside} from '../../directives/svelte/click-outside'
-  
+  import ToastContainer from "./Toast/ToastContainer.svelte";
+
   setContext('clickOutside', clickOutside)
 
   const handleOpenCart = () => {
@@ -34,35 +35,26 @@
     </div>
 
     <div class="flex items-center space-x-4">
-      <a href="/"
-         class="text-center text-gray-700 hover:text-primary transition relative">
-        <div class="text-2xl">
-          <i class="far fa-heart"></i>
-        </div>
-        <div class="text-xs leading-3">Wishlist</div>
-        <div
-          class="absolute right-0 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-primary text-white text-xs">
-          8
-        </div>
-      </a>
-      <div role="button" tabindex="0"
-           class="relative cursor-pointer select-none"
+      <div class="relative cursor-pointer select-none"
            use:clickOutside={() => $isOpenCart = false}
            on:click={handleOpenCart}
            on:keydown={() => {}}
-          >
+      >
         <div class="text-center text-gray-700 hover:text-primary transition">
           <div class="text-2xl">
             <i class="far fa-shopping-cart"></i>
           </div>
           <div class="text-xs leading-3">Cart</div>
-          <div
-            class="absolute -right-3 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-primary text-white text-xs">
-            {$cartStore.length}
-          </div>
+          {#if $cartStore.length !== 0}
+            <div
+              class="absolute -right-3 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-primary text-white text-xs">
+              {$cartStore.length}
+            </div>
+          {/if}
         </div>
         <CartDropdown open={true}/>
       </div>
     </div>
   </div>
 </header>
+<ToastContainer/>
