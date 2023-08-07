@@ -6,16 +6,13 @@
 
   export let toast: ToastItemType
   let slideAnimate = {
-    delay: 250,
     duration: 300,
-    x: 100,
-    y: 500,
     opacity: 0.5,
     easing: quintOut
   }
 </script>
 
-<li class={`toast-item ${toast.type}`}>
+<li class={`toast-item ${toast.type}`} in:slide={slideAnimate} out:slide={slideAnimate}>
   <div class="flex items-center gap-2.5">
     {#if toast.type === 'success'}
       <i class="toast-icon fas fa-check-circle"></i>
@@ -31,7 +28,7 @@
 
 <style lang="scss">
   .toast-item {
-    @apply p-3 flex items-center gap-2.5 rounded relative w-full justify-between shadow;
+    @apply p-3 flex items-center gap-2.5 rounded relative w-full justify-between shadow max-w-[320px];
 
     &:before {
       content: "";

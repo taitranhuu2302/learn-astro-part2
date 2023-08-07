@@ -6,7 +6,6 @@
 
   const handleAddCart = (product: ProductType) => {
     addToCartAction(product)
-    console.log('xin chao')
   }
 </script>
 

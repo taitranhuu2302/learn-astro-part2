@@ -30,7 +30,7 @@ export const addToCartAction = (product: ProductType) => {
 
   cartStore.set(carts)
   addToast({
-    message: "Add cart successfully!",
+    message: `Add ${product.title} to cart successfully!`,
     type: 'success'
   })
 };
