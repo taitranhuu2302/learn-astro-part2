@@ -7,7 +7,7 @@ export const cartStore = atom<CartItemType[]>([]);
 export const isOpenCart = atom<boolean>(false)
 
 export const totalAmountInCart = computed(cartStore, () => {
-  return cartStore.get().reduce((total, cart) => total + (Number(cart.product.price) * Number(cart.quantity)),0)
+  return cartStore.get().reduce((total, cart) => total + (Number(cart.product.price) * Number(cart.quantity)),0).toFixed(2)
 })
 
 export const addToCartAction = (product: ProductType) => {
